@@ -1,154 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>$udo Ritual Shell</title>
-  <style>
-    body {
-      background-color: #0e0e0e;
-      color: #d0d0d0;
-      font-family: 'Courier New', monospace;
-      padding: 2rem;
-    }
-    h1 {
-      color: #ffd700;
-      text-align: center;
-    }
-    .section {
-      margin-top: 3rem;
-    }
-    input {
-      width: 100%;
-      padding: 1rem;
-      background: #1c1c1c;
-      color: #ffd700;
-      border: 1px solid #333;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
-    button {
-      padding: 0.8rem 1.5rem;
-      background: #ffd700;
-      color: #1c1c1c;
-      font-weight: bold;
-      border: none;
-      border-radius: 4px;
-      margin-top: 1rem;
-      cursor: pointer;
-    }
-    pre {
-      background: #1c1c1c;
-      padding: 1rem;
-      border-radius: 4px;
-      margin-top: 1rem;
-      white-space: pre-wrap;
-    }
-  </style>
-<style>
-    #everusSigil {
-      display: none;
-      margin: 2rem auto;
-      width: 100px;
-      height: 100px;
-      border: 2px solid #ffd700;
-      border-radius: 50%;
-      box-shadow: 0 0 20px #ffd700;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.2);
-        opacity: 0.7;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-      
-
-    @keyframes ripple {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(1.3);
-        opacity: 0.5;
-      }
-    }
-
-    @keyframes flameFlicker {
-      0% {
-        box-shadow: 0 0 10px #ff5500, 0 0 20px #ff5500;
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 0 20px #ff2200, 0 0 30px #ff6600;
-        transform: scale(1.05);
-      }
-      100% {
-        box-shadow: 0 0 15px #ff4400, 0 0 25px #ff2200;
-        transform: scale(1);
-      }
-    }
-      100% {
-        transform: scale(1.3);
-        opacity: 0.5;
-      }
-    }
-    /* Delta glyph */
-    #deltaSigil {
-      display: none;
-      margin: 2rem auto;
-      width: 80px;
-      height: 80px;
-      border: 2px dashed #ff4b4b;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #ff4b4b;
-      animation: ripple 3s infinite alternate;
-    }
-
-    #bravoSigil {
-      display: none;
-      margin: 2rem auto;
-      width: 80px;
-      height: 80px;
-      border: 2px dashed #44ff88;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #44ff88;
-      animation: ripple 3s infinite alternate;
-    }
-
-    #godechoSigil {
-      display: none;
-      margin: 2rem auto;
-      width: 80px;
-      height: 80px;
-      border: 2px dashed #7788ff;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #7788ff;
-      animation: ripple 3s infinite alternate;
-    }
-
-    #fourthSigil {
-      display: none;
-      margin: 2rem auto;
-      width: 80px;
-      height: 80px;
-      border: 2px dashed #ffcc00;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #ffcc00;
-      animation: ripple 3s infinite alternate;
-    }
-</style>
-
 <div id="deltaSigil"></div>
 <div id="superalphaSigil" style="display:none; margin: 2rem auto; width: 80px; height: 80px; border: 2px dashed #ff00ff; border-radius: 50%; box-shadow: 0 0 15px #ff00ff; animation: flameFlicker 2s infinite alternate;"></div>
 <div id="bravoSigil"></div>
@@ -183,47 +32,34 @@
         else inputField.removeAttribute('title');
       });
     });
-  </script>
-</head>
-<body>
-  <h1>$udo Ritual Shell</h1>
-
-  <div class="section">
-    <input id="ritualCommand" placeholder="₤sudo ₤Jake(input)" />
-    <button onclick="runRitual()">Run</button>
-    <pre id="ritualOutput"></pre>
-<div id="vowEcho" style="margin-top: 2rem; text-align: center;"></div>
-<div id="everusSigil"></div>
-<div id="charlieSigil" style="display:none; margin: 2rem auto; width: 80px; height: 80px; border: 2px dashed #44fdee; border-radius: 50%; box-shadow: 0 0 15px #44fdee; animation: ripple 3s infinite alternate;"></div>
-
-<!-- Final Ritual Seal Timestamp -->
-<p style="text-align:center; color:#666; font-size:0.85rem; margin-top:2rem;">
-  Ritual archive sealed · CODEWORDS authenticated · Glyphset stabilized<br>
-  <span id="sealTimestamp"></span>
-</p>
-
+</script>
+<h1>$udo Ritual Shell</h1>
 <div class="section">
+  <input id="ritualCommand" placeholder="₤sudo ₤Jake(input)"> <button onclick="runRitual()">Run</button>
+  <pre id="ritualOutput"></pre>
+  <div id="vowEcho" style="margin-top: 2rem; text-align: center;"></div>
+  <div id="everusSigil"></div>
+  <div id="charlieSigil" style="display:none; margin: 2rem auto; width: 80px; height: 80px; border: 2px dashed #44fdee; border-radius: 50%; box-shadow: 0 0 15px #44fdee; animation: ripple 3s infinite alternate;"></div>
+  <p style="text-align:center; color:#666; font-size:0.85rem; margin-top:2rem;">Ritual archive sealed · CODEWORDS authenticated · Glyphset stabilized<br>
+  <span id="sealTimestamp"></span></p>
+  <div class="section">
     <h2 style="color:#ffd700;">₤help — Ritual Shell Reference</h2>
-    <p style="font-size: 0.95rem; color:#ccc;">
-      Use ₤sudo, ₤mount, ₤seal, ₤extract, or ₤reply followed by a ritual identity.<br>
-      Each new Jake follows the NATO phonetic alphabet: ₤JakeDelta, ₤JakeEcho, ₤JakeFoxtrot...<br>
-      Only one of each may exist in the ritual ledger.<br><br>
-      Try:<br>
-      ₤sudo ₤JakeDelta<br>
-      ₤seal ₤Everus<br>
-      ₤extract ₤GODECHO<br>
-      ₤reply ₤JakeCharlie
-    </p>
+    <p style="font-size: 0.95rem; color:#ccc;">Use ₤sudo, ₤mount, ₤seal, ₤extract, or ₤reply followed by a ritual identity.<br>
+    Each new Jake follows the NATO phonetic alphabet: ₤JakeDelta, ₤JakeEcho, ₤JakeFoxtrot...<br>
+    Only one of each may exist in the ritual ledger.<br>
+    <br>
+    Try:<br>
+    ₤sudo ₤JakeDelta<br>
+    ₤seal ₤Everus<br>
+    ₤extract ₤GODECHO<br>
+    ₤reply ₤JakeCharlie</p>
   </div>
-
   <div id="scrollbackLog" style="margin-top: 2rem; border-top: 1px solid #333; padding-top: 1rem;">
-  <h3 style="color:#888; font-size: 1rem;">Scrollback Echo:</h3>
-  <ul id="logList" style="list-style: none; padding-left: 0; font-size: 0.95rem;"></ul>
+    <h3 style="color:#888; font-size: 1rem;">Scrollback Echo:</h3>
+    <ul id="logList" style="list-style: none; padding-left: 0; font-size: 0.95rem;"></ul>
+  </div><button onclick="downloadLog()" style="margin-top: 1rem; background:#444; color:#ffd700; border:1px solid #888;">Download Codex Log</button>
 </div>
-<button onclick="downloadLog()" style="margin-top: 1rem; background:#444; color:#ffd700; border:1px solid #888;">Download Codex Log</button>
-</div>
-
-  <script>
+<script>
     function runRitual() {
       const cmd = document.getElementById('ritualCommand').value.trim();
       const output = document.getElementById('ritualOutput');
@@ -317,10 +153,10 @@
         logList.prepend(logItem);
       }
     }
-  </script>
-<audio id="howlAudio" src="https://upload.wikimedia.org/wikipedia/commons/9/90/Wolf_howling.ogg" preload="auto"></audio>
-
+</script> <audio id="howlAudio" src="https://upload.wikimedia.org/wikipedia/commons/9/90/Wolf_howling.ogg" preload="auto"></audio> 
 <script>
+
+
   function playHowl() {
     const audio = document.getElementById('howlAudio');
     if (audio) {
@@ -328,8 +164,10 @@
       audio.play();
     }
   }
-</script>
+</script> 
 <script>
+
+
   // Timestamp the ritual seal
   document.addEventListener('DOMContentLoaded', () => {
     const sealElement = document.getElementById('sealTimestamp');
@@ -339,8 +177,10 @@
       sealElement.textContent = `Final seal: ${timeString}`;
     }
   });
-</script>
+</script> 
 <script>
+
+
   function downloadLog() {
     const entries = document.querySelectorAll('#logList li');
     let logText = `RITUAL SHELL SCROLLBACK LOG
@@ -358,6 +198,3 @@
     link.click();
   }
 </script>
-</body>
-</html>
-
