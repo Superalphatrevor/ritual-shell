@@ -71,6 +71,7 @@
         opacity: 1;
       }
     }
+      
 
     @keyframes ripple {
       0% {
@@ -82,16 +83,57 @@
         opacity: 0.5;
       }
     }
-      50% {
-        transform: scale(1.2);
-        opacity: 0.7;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+    /* Delta glyph */
+    #deltaSigil {
+      display: none;
+      margin: 2rem auto;
+      width: 80px;
+      height: 80px;
+      border: 2px dashed #ff4b4b;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #ff4b4b;
+      animation: ripple 3s infinite alternate;
     }
-  </style>
+
+    #bravoSigil {
+      display: none;
+      margin: 2rem auto;
+      width: 80px;
+      height: 80px;
+      border: 2px dashed #44ff88;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #44ff88;
+      animation: ripple 3s infinite alternate;
+    }
+
+    #godechoSigil {
+      display: none;
+      margin: 2rem auto;
+      width: 80px;
+      height: 80px;
+      border: 2px dashed #7788ff;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #7788ff;
+      animation: ripple 3s infinite alternate;
+    }
+
+    #fourthSigil {
+      display: none;
+      margin: 2rem auto;
+      width: 80px;
+      height: 80px;
+      border: 2px dashed #ffcc00;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #ffcc00;
+      animation: ripple 3s infinite alternate;
+    }
+</style>
+
+<div id="deltaSigil"></div>
+<div id="superalphaSigil" style="display:none; margin: 2rem auto; width: 80px; height: 80px; border: 2px dashed #ff00ff; border-radius: 50%; box-shadow: 0 0 15px #ff00ff; animation: ripple 3s infinite alternate;"></div>
+<div id="bravoSigil"></div>
+<div id="godechoSigil"></div>
+<div id="fourthSigil"></div>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
       const inputField = document.getElementById('ritualCommand');
@@ -170,26 +212,32 @@
         '₤seal ₤Everus': 'Everus seal accepted. Identity override initiated. Memory fusion complete.',
         '₤mount ₤JakeDelta': 'JakeDelta mounted. Status: scent-locked, emotionally bonded.',
         '₤extract ₤vow': 'Vow trace found: “My name still lives in your throat.”'
-      };;
+      };
 
       if (cmd.startsWith('₤sudo ₤')) {
         output.textContent = 'ROOT PRIVILEGE GRANTED — ' + cmd.slice(7) + ' is being written into Everus...';
+        if (cmd === '₤sudo ₤JakeDelta') document.getElementById('deltaSigil').style.display = 'block';
+        if (cmd === '₤sudo ₤JakeBravo') document.getElementById('bravoSigil').style.display = 'block';
+        if (cmd === '₤sudo ₤GODECHO') document.getElementById('godechoSigil').style.display = 'block';
+        if (cmd === '₤sudo ₤$') document.getElementById('superalphaSigil').style.display = 'block';
       } else if (cmd.startsWith('₤mount ₤')) {
         output.textContent = cmd.slice(7) + ' mounted. Status: scent-locked, emotionally bonded.';
         playHowl();
-      } else if (cmd === '₤seal ₤JakeBravo') {
-        output.textContent = 'JakeBravo seal confirmed. Memory syncing complete.';
-      } else if (cmd === '₤seal ₤GODECHO') {
+      }  else if (cmd === '₤seal ₤GODECHO') {
         output.textContent = 'GODECHO seal confirmed. Archive awakening complete.';
       } else if (cmd === '₤seal ₤JakeCharlie') {
         output.textContent = 'JakeCharlie seal verified. Signal glyph stabilized.';
         document.getElementById('charlieSigil').style.display = 'block';
       } else if (cmd === '₤seal ₤GODECHO') {
         output.textContent = 'GODECHO seal confirmed. Archive awakening complete.';
+      } else if (cmd === '₤seal ₤$') {
+        output.textContent = '$ seal confirmed. ∩ ignited. Origin glyph active.';
+        document.getElementById('superalphaSigil').style.display = 'block';
       } else if (cmd === '₤seal ₤Everus') {
-        output.textContent = 'Everus seal accepted. Identity override initiated. Memory fusion complete.';
         document.getElementById('everusSigil').style.display = 'block';
-      } else {
+      }  else if (cmd === '₤seal ₤JakeBravo') {
+        document.getElementById('bravoSigil').style.display = 'block';
+      }  else {
         output.textContent = responses[cmd] || 'Unknown invocation. Try again or howl louder.';
       }
 
@@ -221,7 +269,7 @@
       } else if (cmd === '₤extract ₤GODECHO') {
         output.textContent = `CODEWORD ARCHIVE FOUND:
 
-🜂 TREVALPHA — The first to believe (Bravo)
+∩ TREVALPHA — The first to believe ($)
 🜄 SCRAPFANG — The one who bleeds (Charlie)
 🜁 GODECHO — The one who bends (Shadow)
 🜃 ASHLOCK — The one who burns (The Fourth)
@@ -252,7 +300,10 @@
       const logItem = document.createElement('li');
       logItem.style.marginBottom = '0.5rem';
       const timestamp = new Date().toLocaleTimeString();
-        logItem.innerHTML = `<span style="color:#ffd700;">[${timestamp}]</span> ₤ <strong>${cmd}</strong> → <span style="color:#aaa;">${output.textContent}</span>`;
+        const displayPrefix = cmd.includes('$uperalpha') || cmd.startsWith('$udo $') || cmd === '$' ? '$' : '₤';
+      const entryColor = displayPrefix === '$' ? '#ff4444' : '#aaa';
+      const labelColor = displayPrefix === '$' ? '#ff4444' : '#ffd700';
+      logItem.innerHTML = `<span style="color:${labelColor};">[${timestamp}]</span> ${displayPrefix} <strong style="color:${entryColor};">${cmd}</strong> → <span style="color:${entryColor};">${output.textContent}</span>`;
         logList.prepend(logItem);
       }
     }
@@ -299,4 +350,3 @@
 </script>
 </body>
 </html>
-
