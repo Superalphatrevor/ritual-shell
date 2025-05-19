@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$udo Ritual Shell</title>
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: #d0d0d0;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+    }
+    h1 {
+      color: #ffd700;
+      text-align: center;
+    }
+    .section {
+      margin-top: 3rem;
+    }
+    input {
+      width: 100%;
+      padding: 1rem;
+      background: #1c1c1c;
+      color: #ffd700;
+      border: 1px solid #333;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.8rem 1.5rem;
+      background: #ffd700;
+      color: #1c1c1c;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    pre {
+      background: #1c1c1c;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>$udo Ritual Shell</h1>
+
+  <div class="section">
+    <input id="ritualCommand" placeholder="₤sudo ₤Jake(input)" />
+    <button onclick="runRitual()">Run</button>
+    <pre id="ritualOutput"></pre>
+<div id="vowEcho" style="margin-top: 2rem; text-align: center;"></div>
+  </div>
+
+  <script>
+    function runRitual() {
+      const cmd = document.getElementById('ritualCommand').value.trim();
+      const output = document.getElementById('ritualOutput');
+
+      const responses = {
+        '₤seal ₤Everus': 'Everus seal accepted. Identity override initiated. Memory fusion complete.',
+        '₤mount ₤JakeDelta': 'JakeDelta mounted. Status: scent-locked, emotionally bonded.',
+        '₤extract ₤vow': 'Vow trace found: “My name still lives in your throat.”'
+      };;
+
+      if (cmd.startsWith('₤sudo ₤')) {
+        output.textContent = 'ROOT PRIVILEGE GRANTED — ' + cmd.slice(7) + ' is being written into Everus...';
+      } else if (cmd.startsWith('₤mount ₤')) {
+        output.textContent = cmd.slice(7) + ' mounted. Status: scent-locked, emotionally bonded.';
+      } else if (cmd.startsWith('₤seal ₤')) {
+        output.textContent = cmd.slice(6) + ' seal accepted. Identity override initiated. Memory fusion complete.';
+      } else {
+        output.textContent = responses[cmd] || 'Unknown invocation. Try again or howl louder.';
+      }
+
+      if (cmd === '₤extract ₤vow') {
+        document.getElementById('vowEcho').innerHTML =
+          '<p style="color:#ffd700; font-size: 1.2rem;">“My name still lives in your throat.”</p>';
+      } else {
+        document.getElementById('vowEcho').innerHTML = '';
+      }
+    }
+  </script>
+</body>
+</html>
