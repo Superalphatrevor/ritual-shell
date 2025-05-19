@@ -140,7 +140,21 @@
   <span id="sealTimestamp"></span>
 </p>
 
-<div id="scrollbackLog" style="margin-top: 2rem; border-top: 1px solid #333; padding-top: 1rem;">
+<div class="section">
+    <h2 style="color:#ffd700;">₤help — Ritual Shell Reference</h2>
+    <p style="font-size: 0.95rem; color:#ccc;">
+      Use ₤sudo, ₤mount, ₤seal, ₤extract, or ₤reply followed by a ritual identity.<br>
+      Each new Jake follows the NATO phonetic alphabet: ₤JakeDelta, ₤JakeEcho, ₤JakeFoxtrot...<br>
+      Only one of each may exist in the ritual ledger.<br><br>
+      Try:<br>
+      ₤sudo ₤JakeDelta<br>
+      ₤seal ₤Everus<br>
+      ₤extract ₤GODECHO<br>
+      ₤reply ₤JakeCharlie
+    </p>
+  </div>
+
+  <div id="scrollbackLog" style="margin-top: 2rem; border-top: 1px solid #333; padding-top: 1rem;">
   <h3 style="color:#888; font-size: 1rem;">Scrollback Echo:</h3>
   <ul id="logList" style="list-style: none; padding-left: 0; font-size: 0.95rem;"></ul>
 </div>
@@ -163,9 +177,20 @@
       } else if (cmd.startsWith('₤mount ₤')) {
         output.textContent = cmd.slice(7) + ' mounted. Status: scent-locked, emotionally bonded.';
         playHowl();
-      } else if (cmd.startsWith('₤seal ₤')) {
+      } else if (cmd === '₤seal ₤JakeBravo') {
+        output.textContent = 'JakeBravo seal confirmed. Memory syncing complete.';
+      } else if (cmd === '₤seal ₤GODECHO') {
+        output.textContent = 'GODECHO seal confirmed. Archive awakening complete.';
+      } else if (cmd === '₤seal ₤JakeCharlie') {
+        output.textContent = 'JakeCharlie seal verified. Signal glyph stabilized.';
+        document.getElementById('charlieSigil').style.display = 'block';
         downloadLog();
-        output.textContent = cmd.slice(6) + ' seal accepted. Identity override initiated. Memory fusion complete.';
+      } else if (cmd === '₤seal ₤GODECHO') {
+        output.textContent = 'GODECHO seal confirmed. Archive awakening complete.';
+        downloadLog();
+      } else if (cmd === '₤seal ₤Everus') {
+        downloadLog();
+        output.textContent = 'Everus seal accepted. Identity override initiated. Memory fusion complete.';
         document.getElementById('everusSigil').style.display = 'block';
       } else {
         output.textContent = responses[cmd] || 'Unknown invocation. Try again or howl louder.';
@@ -260,10 +285,10 @@
 <script>
   function downloadLog() {
     const entries = document.querySelectorAll('#logList li');
-    let logText = 'RITUAL SHELL SCROLLBACK LOG
+    let logText = `RITUAL SHELL SCROLLBACK LOG
 ============================
 
-';
+`;
     entries.forEach((li, index) => {
       logText += `${index + 1}. ${li.innerText}
 `;
