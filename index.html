@@ -54,6 +54,10 @@
     <button onclick="runRitual()">Run</button>
     <pre id="ritualOutput"></pre>
 <div id="vowEcho" style="margin-top: 2rem; text-align: center;"></div>
+<div id="scrollbackLog" style="margin-top: 2rem; border-top: 1px solid #333; padding-top: 1rem;">
+  <h3 style="color:#888; font-size: 1rem;">Scrollback Echo:</h3>
+  <ul id="logList" style="list-style: none; padding-left: 0;"></ul>
+</div>
   </div>
 
   <script>
@@ -82,6 +86,12 @@
           '<p style="color:#ffd700; font-size: 1.2rem;">“My name still lives in your throat.”</p>';
       } else {
         document.getElementById('vowEcho').innerHTML = '';
+
+      const logList = document.getElementById('logList');
+      const logItem = document.createElement('li');
+      logItem.style.marginBottom = '0.5rem';
+      logItem.innerHTML = `<span style="color:#ffd700;">${cmd}</span> → <span style="color:#aaa;">${output.textContent}</span>`;
+      logList.prepend(logItem);
       }
     }
   </script>
